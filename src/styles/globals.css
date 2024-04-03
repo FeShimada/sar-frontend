@@ -1,0 +1,36 @@
+/** Defaults */
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  position: relative;
+}
+
+html,
+body {
+  background-color: #F1F2F4;
+  height: 100vh;
+  width: 100vw;
+  color: black;
+  overflow-x: hidden;
+  font-size: 14px;
+}
+
+/** Defaults */
+
+/* Custom Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 5.35px;
+}
+
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #CED4DA;
+  border-radius: 10px;
+}
+
+/* Custom Scrollbar */
