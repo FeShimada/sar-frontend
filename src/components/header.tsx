@@ -5,11 +5,11 @@ import SignoutButton from './signoutbutton';
 import { useSession } from 'next-auth/react';
 
 
-interface AuthorHeaderPropType {
+interface HeaderPropType {
     title?: string
 }
 
-export default function AuthorHeader(props: AuthorHeaderPropType) {
+export default function Header(props: HeaderPropType) {
 
     const { title } = props
 
@@ -27,13 +27,19 @@ export default function AuthorHeader(props: AuthorHeaderPropType) {
             }}>
                 <Typography color={'white'} fontWeight={700} variant='h4'>
 
-                    {title ? (
-                        title
-                    ) : (
+                    {session?.user.role === 0 ? (
                         <>
-                        Bem vindo autor {session?.user.name}
+                        Bem vindo Autor {session?.user.name}
                         </>
-                    )}
+                    ) : session?.user.role === 1 ? (
+                        <>
+                        Bem vindo Avaliador {session?.user.name}
+                        </>
+                    ) : session?.user.role === 2 ? (
+                        <>
+                        Bem vindo Administrador {session?.user.name}
+                        </>
+                    ) : null}
 
                 </Typography>
                 <SignoutButton/>

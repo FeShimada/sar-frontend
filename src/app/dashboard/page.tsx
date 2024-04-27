@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import AuthorDashboard from "./author/authordashboard";
 import MeasurerDashboard from "./measurer/measurerdashboard";
+import AdminDashboard from "./admin/admindashboard";
 
 
 export default async function Dashboard() {
@@ -14,9 +15,9 @@ export default async function Dashboard() {
                 <AuthorDashboard />
             ) : session?.user.role === 1 ? (
                 <MeasurerDashboard />
-            ) : (
-                null
-            )}
+            ) : session?.user.role === 2 ? (
+                <AdminDashboard />
+            ) : null}
 
         </>
     )

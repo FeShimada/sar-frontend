@@ -1,7 +1,6 @@
 "use client"
 
 import DataTable from "@/components/datatable";
-import MeasurerHeader from "@/components/measurerheader";
 import { Box, Typography } from '@mui/material'
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -47,8 +46,6 @@ export default function MeasurerDashboard() {
 
     return (
         <>
-            <MeasurerHeader />
-
             <Box
                 sx={{
                     display: 'flex',

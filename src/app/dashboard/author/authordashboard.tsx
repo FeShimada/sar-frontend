@@ -1,6 +1,5 @@
 "use client"
 
-import AuthorHeader from '@/components/authorheader';
 import { Box, TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Typography, IconButton, Button } from '@mui/material'
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
@@ -85,7 +84,6 @@ export default function AuthorDashboard() {
 
     return (
         <>
-            <AuthorHeader />
             <Box
                 sx={{
                     minHeight: '70vh',

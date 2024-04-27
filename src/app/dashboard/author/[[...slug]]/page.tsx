@@ -1,7 +1,6 @@
 
 "use client"
 
-import AuthorHeader from '@/components/authorheader';
 import { usePathname, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { Box, Grid, Button, TextField, Autocomplete, List, ListItem } from '@mui/material'
@@ -177,11 +176,6 @@ export default function EditarArtigo() {
 
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            {id ? (
-                <AuthorHeader title='Editar artigo' />
-            ) : (
-                <AuthorHeader title='Postar artigo' />
-            )}
 
             <Box
                 sx={{
