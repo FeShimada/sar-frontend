@@ -2,6 +2,8 @@
 'use client';
 import { Roboto } from 'next/font/google';
 import { createTheme } from '@mui/material/styles';
+import { ptBR as ptBRDataGrid } from '@mui/x-data-grid/locales';
+import type { } from '@mui/x-data-grid/themeAugmentation';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -49,7 +51,7 @@ const theme = createTheme({
           fontSize: '25px'
         },
         h5: {
-          fontsize: '20px',
+          fontSize: '20px',
         },
         h6: {
           fontSize: '16px'
@@ -59,8 +61,39 @@ const theme = createTheme({
           fontWeight: 400,
         },
       },
-    }
+    },
+    MuiDataGrid: {
+      styleOverrides: {
+        root: {
+          border: '2px solid #CED4DA',
+          borderRadius: '6px',
+          '& .MuiDataGrid-cell': {
+            fontSize: '14px',
+            color: '#202121'
+          },
+          '& .MuiDataGrid-columnHeader': {
+            fontSize: '12px',
+            color: '#202121',
+            fontWeight: 700,
+            background: 'white',
+            borderBottom: '2px solid #CED4DA'
+          },
+          '& .MuiDataGrid-row': {
+            borderBottom: '1px solid #CED4DA',
+            cursor: 'pointer'
+          },
+          '& .MuiDataGrid-iconButtonContainer': {
+            marginLeft: '2px',
+            visibility: 'visible !important',
+            width: 'auto !important',
+          },
+          '& .MuiDataGrid-sortIcon': {
+            opacity: 'inherit !important',
+          }
+        }
+      }
+    },
   }
-});
+}, ptBRDataGrid);
 
 export default theme;
