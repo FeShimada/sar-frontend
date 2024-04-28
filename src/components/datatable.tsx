@@ -10,6 +10,10 @@ import { useRouter } from 'next/navigation';
 
 interface DataTablePropType {
     articles: any[]
+    handleRowClick?: () => void
+    setSelectedArticle?: React.Dispatch<React.SetStateAction<{
+      id: number;
+  }>>
 }
 
 interface UnsortedIconProps {
@@ -68,6 +72,11 @@ export default function DataTable(props: DataTablePropType) {
   const router = useRouter()
 
   const handleRowClick = (params: any, event: MuiEvent<React.MouseEvent<HTMLElement, MouseEvent>>) => {
+    if(props.handleRowClick) {
+      props.setSelectedArticle!(params);
+      props.handleRowClick();
+      return;
+    }
     router.push(`/dashboard/measurer/${params.id}`);
   }
 
