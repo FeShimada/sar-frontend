@@ -3,6 +3,7 @@
 import { Tabs, Tab, Typography } from '@mui/material'
 import { useState } from 'react';
 import ViewAllArticle from './viewallarticle';
+import EditUsers from './editusers';
 
 
 export default function AdminDashboard() {
@@ -18,7 +19,7 @@ export default function AdminDashboard() {
             case 0:
                 return <ViewAllArticle />
             case 1:
-                return <>Editar usuários</>
+                return <EditUsers />
             case 2:
                 return <>Selecionar artigos para publicação</>
             default:
