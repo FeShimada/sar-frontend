@@ -9,11 +9,12 @@ import { useRouter } from 'next/navigation';
 
 
 interface DataTablePropType {
-    articles: any[]
-    handleRowClick?: () => void
-    setSelectedArticle?: React.Dispatch<React.SetStateAction<{
-      id: number;
+  articles: any[]
+  handleRowClick?: () => void
+  setSelectedArticle?: React.Dispatch<React.SetStateAction<{
+    id: number;
   }>>
+  publicated?: boolean;
 }
 
 interface UnsortedIconProps {
@@ -26,58 +27,60 @@ export function UnsortedIcon({ className }: UnsortedIconProps) {
 
 export default function DataTable(props: DataTablePropType) {
 
-    const columns: GridColDef<(typeof props.articles)[number]>[] = [
-        {
-          field: 'title',
-          headerName: 'Título', width: 150
-        },
-        {
-          field: 'status',
-          headerName: 'Situação', width: 150
-        },
-        {
-          field: 'score1',
-          headerName: 'Pontuação 1', width: 150
-        },
-        {
-          field: 'score2',
-          headerName: 'Pontuação 2',
-          width: 150
-        },
-        {
-          field: 'media',
-          headerName: 'Média',
-          flex: 1,
-        },
-        {
-          field: '',
-          sortable: false,
-          renderCell: (params) => [
-            <VisibilityOutlinedIcon
-              key={params.row.id}
-              className="hovered-icon"
-              sx={{
-                color: '#CED4DA',
-                outline: 'none',
-                '&:hover': {
-                  color: '#6c757d'
-                },
-      
-              }}
-            />
-          ],
-        }
-      ];
+  const columns: GridColDef<(typeof props.articles)[number]>[] = [
+    {
+      field: 'title',
+      headerName: 'Título', width: 150
+    },
+    {
+      field: 'status',
+      headerName: 'Situação', width: 150
+    },
+    {
+      field: 'score1',
+      headerName: 'Pontuação 1', width: 150
+    },
+    {
+      field: 'score2',
+      headerName: 'Pontuação 2',
+      width: 150
+    },
+    {
+      field: 'media',
+      headerName: 'Média',
+      flex: 1,
+    },
+    {
+      field: '',
+      sortable: false,
+      renderCell: (params) => [
+        <VisibilityOutlinedIcon
+          key={params.row.id}
+          className="hovered-icon"
+          sx={{
+            color: '#CED4DA',
+            outline: 'none',
+            '&:hover': {
+              color: '#6c757d'
+            },
+
+          }}
+        />
+      ],
+    }
+  ];
 
   const router = useRouter()
 
   const handleRowClick = (params: any, event: MuiEvent<React.MouseEvent<HTMLElement, MouseEvent>>) => {
-    if(props.handleRowClick) {
+    if (props.handleRowClick) {
       props.setSelectedArticle!(params);
       props.handleRowClick();
       return;
     }
-    router.push(`/dashboard/measurer/${params.id}`);
+    if(!props.publicated) {
+      router.push(`/dashboard/measurer/${params.id}`);
+    }
   }
 
   return (
